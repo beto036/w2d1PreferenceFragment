@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         prefCheckBox = (CheckBox)findViewById(R.id.prefCheckBox);
         prefEditText = (TextView)findViewById(R.id.prefEditText);
+
 
         loadPref();
     }
@@ -65,5 +67,11 @@ public class MainActivity extends AppCompatActivity {
         String my_edittext_preference = mySharedPreferences.getString("edittext_preference", "");
         prefEditText.setText(my_edittext_preference);
 
+    }
+
+    public void showPreferences(View view) {
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this, SetPreferenceActivity.class);
+        startActivityForResult(intent, 0);
     }
 }
